@@ -26,12 +26,20 @@ const Profile = ({ userInfo, userRepos }) => {
 
 export async function getServerSideProps(context) {
 	let { username, page } = context.query;
+	let user;
 
-	const user = await getMultipleApiServices([
-		{ endpoint: UrlMapParams(API.USER_GET, username) },
-		{ endpoint: UrlMapParams(API.USER_REPOS, username), data: { sort: 'updated' ,per_page: 6, page } },
-		{ endpoint: UrlMapParams(API.USER_FOLLOWERS, username) },
-	]);
+	try {
+		user = await getMultipleApiServices([
+			{ endpoint: UrlMapParams(API.USER_GET, username) },
+			{ endpoint: UrlMapParams(API.USER_REPOS, username), data: { sort: 'updated' ,per_page: 6, page } },
+			{ endpoint: UrlMapParams(API.USER_FOLLOWERS, username) },
+		]);
+	} catch(error) {
+		// redirect to 404 page if user can't be found
+		return {
+			notFound: true,
+		  }
+	}
 
 	const pagination = parse(user[1].headers.link);
 
