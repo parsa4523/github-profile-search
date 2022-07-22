@@ -9,52 +9,22 @@ import { useRouter } from 'next/router';
 import {
 	Box,
 	Button,
-	Circle,
 	Heading,
 	chakra,
-	Img,
-	SimpleGrid,
 	Stack,
 	Text,
 	Flex,
-	VisuallyHidden,
 	InputGroup,
 	InputLeftElement,
 	Input,
-	Center,
-	FormLabel,
 	FormControl,
-	AlertIcon,
-	Alert,
-	HStack,
 } from '@chakra-ui/react';
 import { BiSearch } from 'react-icons/bi';
-import { Notification } from './components/Notification';
-import StateContext from './components/StateContext';
-import DispatchContext from './components/DispatchContext';
+import { useUserSearch } from '../hooks/useUserSearch';
 
 export default function Home() {
-	const router = useRouter();
 	const [query, setQuery] = useState('');
-	const dispatch = useContext(DispatchContext);
-
-	const handleUserSearch = async () => {
-		try {
-			const user = await getApiService(UrlMapParams(API.USER_GET, query));
-			router.push(`/profile/${query}`);
-			console.log(user);
-		} catch (error) {
-			if (error.response.status === 404) {
-				dispatch({
-					type: 'alert',
-					title: 'User Not Found!',
-					desc: 'Make sure the spelling is correct!',
-				});
-			} else {
-				console.log('something went wrong!');
-			}
-		}
-	};
+	const { handleUserSearch } = useUserSearch();
 
 	return (
 		<Box h={'full'}>
@@ -79,8 +49,7 @@ export default function Home() {
 							<chakra.form
 								onSubmit={e => {
 									e.preventDefault();
-									console.log('e', e);
-									handleUserSearch();
+									handleUserSearch(query);
 								}}
 								display={'flex'}
 								flexDirection={{

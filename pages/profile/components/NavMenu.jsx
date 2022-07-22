@@ -1,35 +1,13 @@
 import React, { useState, useContext } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
-import API from '../../../constants/API';
-import { getApiService } from '../../../services/HttpService';
-import { UrlMapParams } from '../../../helpers/urlHelper';
-import DispatchContext from '../../components/DispatchContext';
 
 import { Box, Container, Image, FormControl, HStack, Input, InputGroup, InputLeftElement, chakra } from '@chakra-ui/react';
 import { BiSearch } from 'react-icons/bi';
+import { useUserSearch } from '../../../hooks/useUserSearch';
 
 const NavMenu = () => {
-	const router = useRouter();
-	const [query, setQuery] = useState();
-	const dispatch = useContext(DispatchContext);
-
-	const handleUserSearch = async () => {
-		try {
-			const user = await getApiService(UrlMapParams(API.USER_GET, query));
-			router.push(`/profile/${query}`);
-		} catch (error) {
-			if (error?.response?.status === 404) {
-				dispatch({
-					type: 'alert',
-					title: 'User Not Found!',
-					desc: 'Make sure the spelling is correct!',
-				});
-			} else {
-				console.log('something went wrong!');
-			}
-		}
-	};
+	const [query, setQuery] = useState('');
+	const { handleUserSearch } = useUserSearch();
 
 	return (
 		<Container maxW="7xl">
@@ -51,7 +29,7 @@ const NavMenu = () => {
 				<chakra.form
 					onSubmit={e => {
 						e.preventDefault();
-						handleUserSearch();
+						handleUserSearch(query);
 					}}
 				>
 					<FormControl id="username">
