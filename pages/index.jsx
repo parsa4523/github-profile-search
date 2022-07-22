@@ -6,19 +6,7 @@ import { UrlMapParams } from '../helpers/urlHelper';
 
 import { useRouter } from 'next/router';
 
-import {
-	Box,
-	Button,
-	Heading,
-	chakra,
-	Stack,
-	Text,
-	Flex,
-	InputGroup,
-	InputLeftElement,
-	Input,
-	FormControl,
-} from '@chakra-ui/react';
+import { Box, Button, Heading, chakra, Stack, Text, Flex, InputGroup, InputLeftElement, Input, FormControl } from '@chakra-ui/react';
 import { BiSearch } from 'react-icons/bi';
 import { useUserSearch } from '../hooks/useUserSearch';
 
@@ -80,9 +68,26 @@ export default function Home() {
 								</Button>
 							</chakra.form>
 						</Stack>
-						<Text fontSize="md" mt="4" maxW="xl" mx="auto">
-							Search for any profile in the github platform
-						</Text>
+						<Box
+							maxW={'lg'}
+							borderRadius={8}
+							height={150}
+							bg={'gray.100'}
+							mt={8}
+							p={4}
+							display={'flex'}
+							alignItems={'center'}
+							backgroundSize={'cover'}
+							backgroundImage={'linear-gradient(45deg, #00000080, #00000050), url(/git.jpg)'}
+							transition={'0.3s'}
+							_hover={{
+								transform: 'scale(1.1)'
+							}}
+						>
+							<Text color={'white'} fontWeight={800} fontSize="xl" maxW="xl">
+								Search for any profile in the github platform
+							</Text>
+						</Box>
 					</Box>
 				</Box>
 			</Flex>
