@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 
 import API from '../constants/API';
 import { getApiService } from '../services/HttpService';
-import { UrlMapParams } from '../helpers/urlHelper';
-import DispatchContext from '../pages/components/DispatchContext';
+import { UrlMapParams } from '../helpers/UrlHelper';
+import DispatchContext from '../components/DispatchContext';
 
 export const useUserSearch = () => {
 	const router = useRouter();

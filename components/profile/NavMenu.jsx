@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { Box, Container, Image, FormControl, HStack, Input, InputGroup, InputLeftElement, chakra } from '@chakra-ui/react';
 import { BiSearch } from 'react-icons/bi';
-import { useUserSearch } from '../../../hooks/useUserSearch';
+import { useUserSearch } from '../../hooks/useUserSearch';
 
 const NavMenu = () => {
 	const [query, setQuery] = useState('');

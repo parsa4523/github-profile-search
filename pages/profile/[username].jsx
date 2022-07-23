@@ -2,12 +2,12 @@ import { Flex } from '@chakra-ui/react';
 import * as React from 'react';
 
 import { getMultipleApiServices } from '../../services/HttpService';
-import { UrlMapParams } from '../../helpers/urlHelper';
+import { UrlMapParams } from '../../helpers/UrlHelper';
 import parse from 'parse-link-header';
 
-import NavMenu from './components/NavMenu';
-import { PageContent } from './components/PageContent';
-import { PageHeader } from './components/PageHeader';
+import NavMenu from '../../components/profile/NavMenu';
+import { PageContent } from '../../components/profile/PageContent';
+import { PageHeader } from '../../components/profile/PageHeader';
 import API from '../../constants/API';
 
 const Profile = ({ userInfo, userRepos }) => {

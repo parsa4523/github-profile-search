@@ -1,9 +1,9 @@
 import { Box, ChakraProvider, Heading, Stack, Text } from '@chakra-ui/react';
 import { useReducer } from 'react';
 import '../styles/globals.css';
-import DispatchContext from './components/DispatchContext';
-import { Notification } from './components/Notification';
-import StateContext from './components/StateContext';
+import DispatchContext from '../components/DispatchContext';
+import { Notification } from '../components/Notification';
+import StateContext from '../components/StateContext';
 
 function MyApp({ Component, pageProps }) {
 	const initialAlertState = [];
@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
 		<ChakraProvider>
 			<StateContext.Provider value={state}>
 				<DispatchContext.Provider value={dispatch}>
-        <Box position={'absolute'} width={'100%'}>
+					<Box position={'absolute'} width={'100%'}>
 						<Stack spacing={3} className={'floating-alerts'} justify={'center'}>
 							{state.map((msg, index) => {
 								return (

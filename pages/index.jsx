@@ -1,11 +1,5 @@
 import React, { useState, useReducer, useContext } from 'react';
 
-import API from '../constants/API';
-import { getApiService } from '../services/HttpService';
-import { UrlMapParams } from '../helpers/urlHelper';
-
-import { useRouter } from 'next/router';
-
 import { Box, Button, Heading, chakra, Stack, Text, Flex, InputGroup, InputLeftElement, Input, FormControl } from '@chakra-ui/react';
 import { BiSearch } from 'react-icons/bi';
 import { useUserSearch } from '../hooks/useUserSearch';
