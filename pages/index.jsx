@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useContext } from 'react';
+import React, { useState } from 'react';
 
 import { Box, Button, Heading, chakra, Stack, Text, Flex, InputGroup, InputLeftElement, Input, FormControl } from '@chakra-ui/react';
 import { BiSearch } from 'react-icons/bi';
