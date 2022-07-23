@@ -2,7 +2,7 @@ import React, { useState, useReducer, useContext } from 'react';
 
 import API from '../constants/API';
 import { getApiService } from '../services/HttpService';
-import { UrlMapParams } from '../helpers/urlHelper';
+import { UrlMapParams } from '../helpers/UrlHelper';
 
 import { useRouter } from 'next/router';
 

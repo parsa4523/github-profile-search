@@ -2,7 +2,7 @@ import { Flex } from '@chakra-ui/react';
 import * as React from 'react';
 
 import { getMultipleApiServices } from '../../services/HttpService';
-import { UrlMapParams } from '../../helpers/urlHelper';
+import { UrlMapParams } from '../../helpers/UrlHelper';
 import parse from 'parse-link-header';
 
 import NavMenu from './components/NavMenu';
